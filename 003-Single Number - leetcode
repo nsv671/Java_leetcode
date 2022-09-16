@@ -1,0 +1,13 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        int res =0;
+        for(int i=0; i<nums.length; i++){
+        
+            // a XOR a =0;
+            // 1^1 =0 and 0^0 =0
+            //0^1 =1 and 1^0 =1
+            res = res^nums[i];
+        }
+        return res;
+    }
+}
