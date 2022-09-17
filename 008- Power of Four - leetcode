@@ -1,0 +1,13 @@
+class Solution {
+    public boolean isPowerOfFour(int n) {
+    
+     // without recurssion
+    // checking the 3 condition
+    // if number is greater than 0
+    // if no have only one bit (n&n-1 turn off the last bit)
+    // checking if the set bit present in 4th ower position
+    // 0x55555555 = (in binary) 01010101010101010101010101010101
+    
+      return (n>0) && ((n&n-1)==0)&&((n&0x55555555)!=0) ;
+    }
+}
