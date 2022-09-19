@@ -1,0 +1,49 @@
+class Solution {
+    public String toHex(int num) {
+        char[] charMap = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd','e','f'};
+        
+        //explicitely hending the 0 case
+        if(num==0) return "0";
+        
+        String res = "";
+        String ans="";
+        int n =0;
+        //here we are getting the hexa decimal number in reverse order
+        while(n<8 && num!=0){
+            res += charMap[num & 15];
+            num>>=4;
+            n++;
+        }
+        
+        //reversing the res
+        // String ans ="";
+        int resLength = res.length();
+        for(int i =resLength-1; i>=0; i--){
+            ans+=res.charAt(i);
+        }  
+        
+        return ans; 
+        
+        // from disscussion forum
+        
+        /*
+        if(num==0) return "0";
+        
+        char[] hex = new char[]{'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};
+        
+        int count=0;
+        StringBuilder stringBuilder = new StringBuilder();
+        
+        //finding the 1st hexa decimal digit which is between 0 to f
+        //running the loop till 8th iteration because int have 32 bit and we are dealing 4 bit at a time
+        while(count<8 && num!=0){
+            stringBuilder.append(hex[num&15]);
+            num>>=4;
+            count++;
+        }
+        
+        //we are using toString() function to convert it to string 
+        return stringBuilder.reverse().toString();
+        */
+    }
+}
