@@ -1,0 +1,30 @@
+class Solution {
+    public int minBitFlips(int start, int goal) {
+        if(start==goal) return 0;
+        
+        int max = Math.max(start, goal);
+        int min = Math.min(start, goal);
+        int count = 0;
+        
+        while(max>0){
+            if((max&1) != (min&1)) count++;
+            max>>=1;
+            min>>=1;
+        }
+        return count;
+        
+        //via xor operation
+        //XOR  of 2 bit is 1 when both the bit is different
+        /*
+        int xor = start^goal;
+        int count=0;
+        
+        //here we are calculating the total no. of set bit
+        while(xor>0){
+            xor&=xor-1;
+            count++;
+        }
+        return count;
+        */
+    }
+}
