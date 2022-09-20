@@ -1,0 +1,26 @@
+class Solution {
+    public int findComplement(int num) {
+        
+        //initializing the result number
+        int complementNumber = 0;
+        
+        //number of bit till most significat bit MSB
+        int MSB =1 + (int) (Math.log(num)/Math.log(2));
+        
+        while(MSB>0){
+            
+            //if we right after the condition then it will shift the complementNumber extra 1 place
+            //so written before
+            complementNumber<<=1;
+            
+            //condition for bit inversion, here we are shifting the original number and checking with 1
+            
+            if(((num>>MSB-1)&1)==1) complementNumber = complementNumber | 0;
+            else complementNumber = complementNumber | 1;
+            
+            //decreasing the bit
+            MSB--;
+        }
+        return complementNumber;
+    }
+}
