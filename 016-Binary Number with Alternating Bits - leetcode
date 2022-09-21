@@ -1,0 +1,24 @@
+class Solution {
+    public boolean hasAlternatingBits(int n) {
+        int length = (int)(Math.log(n)/Math.log(2));
+        // int one = 1;
+        // int temp =1;
+        while(length>0){
+            if(((n>>length)&1) == ((n>>length-1)&1)) return false;
+            length--;
+        }
+        return true;
+        
+        //solution from discussion
+        //mthod if n has alternate bits then n>>1 has alter net bit but in different position
+        //if we do the XOR operation the all bit shoult be 1 from MSB to the last
+        //if we do the AND operation with n+1 the it will result 0 (only if the number have alternet bit in side by side)
+        /*
+        int  m=n>>1;
+          n = n ^ m;
+          int ans=n & n+1;
+        if(ans==0) return true;
+        else  return false;  
+        */
+    }
+}
