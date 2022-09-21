@@ -1,0 +1,22 @@
+class Solution {
+    public int subsetXORSum(int[] nums) {
+        // if(nums.length == 0) return 0;
+        
+        // int xor =0;
+        int length = nums.length;
+    
+        return powerSet(nums, length, 0);
+    }
+    
+    //helper function via which we are generating the power set and doing XOR operation
+    static int powerSet(int[] arr, int n, int xor){
+        if(n==0) return xor;
+        
+        //1st recursion with out XOR operation with array element
+        //2nd recursion with XOR operation with array element
+        int temp = powerSet(arr, n-1, xor) + powerSet(arr, n-1, xor^arr[n-1]);
+        
+        //returning the sum of all POWERSET XOR
+        return temp;
+    }
+}
