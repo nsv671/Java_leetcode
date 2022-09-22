@@ -1,0 +1,21 @@
+class Solution {
+    public int bitwiseComplement(int n) {
+        if(n==0) return 1;
+        int numberOfBits = 1 + (int) (Math.log(n)/Math.log(2));
+
+        int i=0, result =0;
+        
+        //running the loop for number of bits present in the n
+        while(i<numberOfBits){ 
+            
+            //calculating the number simultaneously inverting the bit
+            result =result + (((n%2)==0? 1:0)*((int)(Math.pow(2,i))));
+
+            //right shifting the number by 1
+            n>>=1;
+            //inccreasing the i by 1
+            i++;
+        }
+        return result;
+    }
+}
