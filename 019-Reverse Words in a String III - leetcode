@@ -1,0 +1,40 @@
+class Solution {
+    public String reverseWords(String s) {
+        //spliting the words from string and making them an ARRAY
+        String[] words = s.split(" ");
+        
+        //Initialing the answer variable;
+        String ans ="";
+        
+        //calculating the length of the aaray
+        int length = words.length;
+        
+        //creating a mutable string variable via STRINGBUILDER
+        StringBuilder result = new StringBuilder();
+        
+        //iterating over array
+        
+        //solution from discussion
+        for(int i=0; i< length; i++){
+            StringBuilder temp = new StringBuilder(words[i]);
+            result.append(temp.reverse().toString());
+            result.append(" ");
+        }
+        return result.toString().trim();
+        
+        /*
+        //My solution
+        for(int i = 0; i<length; i++){
+            //adding the words to
+            result.append(words[i]);
+            result.reverse();
+            ans+=result;
+            result.delete(0, words[i].length());
+            ans+=" ";
+        }
+        
+        // ans = ans - " ";
+        return ans.trim();
+        */
+    }
+}
