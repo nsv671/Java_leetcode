@@ -1,0 +1,39 @@
+class Solution {
+    public int countPrimeSetBits(int left, int right) {
+    
+        //no of bit present in number I is the array of ith index
+        int[] bitCount = new int[256];
+        for(int i=0; i<256; i++){
+            bitCount[i] = (i&1) + bitCount[i/2];
+        }
+        
+        int primeSetBitCount = 0;
+        //checking from LEFT to RIGTH both inclusive
+        for(int i =left; i<=right; i++){
+            int count = 0;
+            //BIT COUT IN NUMBER i
+            // count = bitCount[i&0xff] + bitCount[(i>>8)&0xff]+bitCount[(i>>16)&0xff]+bitCount[(i>>24)&0xff];
+            int temp = i;
+            while(temp>0){
+                count++;
+                temp &=temp-1;
+            }
+            
+            //CHECKING THE COUT IF IT IT A PRIMR OR NOT
+            if(isPrime(count)) primeSetBitCount++;
+        }
+        return primeSetBitCount;
+    }
+    
+    //prime no checking function
+    static boolean isPrime(int n){
+        if(n==1) return false;
+        if(n==2 || n==3) return true;
+        if(n%2==0 || n%3==0) return false;
+        
+        for(int i =5; i<=n; i+=6){
+            if(n%i == 0 || n%(i+2)==0) return false;
+        }
+        return true;
+    }
+}
