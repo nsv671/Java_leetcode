@@ -1,0 +1,61 @@
+class Solution {
+    public int[] findErrorNums(int[] nums) {
+        
+        //from discussion
+        // int length = nums.length;
+        int[] numsCount = new int[nums.length];
+        int[] res = new int[2];
+        
+        for(int i =0; i< nums.length; i++){
+            numsCount[nums[i]-1]++;
+        }
+        
+        for(int i=0; i<nums.length; i++){
+            // System.out.println(numsCount[i]);
+            if(numsCount[i]==2) res[0] = i+1;
+            if(numsCount[i]==0) res[1] = i+1;
+        }
+        return res;
+        
+        //my solution
+        //step1 -- checking the duplicate no
+        //checking the no which is not present in the array and string the count of the no present
+        
+        /*
+        int length = nums.length;
+        int[] numsCount = new int[length];
+        int[] res = new int[2];
+        Arrays.fill(numsCount, 0);
+        
+        for(int i =0; i<length; i++){
+            int count = 1;
+            for(int j =i+1; j<length; j++){
+                if(nums[i]==nums[j]){
+                    res[0] = nums[i];
+                    break;
+                }
+                
+            }
+            
+        }
+        
+        for(int i =0; i<length; i++){
+            for(int j =1; j<=length; j++){
+                if(j==nums[i]){
+                    numsCount[j-1]++;
+                }
+            }
+        }
+        
+        for (int i =0; i<length; i++){
+            if(numsCount[i]==0) {
+                res[1] = i+1;
+                break;
+            }
+        }
+        
+    return res;
+    
+    */
+    }
+}
