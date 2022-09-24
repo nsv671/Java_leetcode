@@ -1,0 +1,40 @@
+class Solution {
+    public int binaryGap(int n) {
+        int distanceOfMSBfrom0 = ((int) (Math.log(n)/Math.log(2)));
+
+        //case for n =0 and the number having only one set bit (i.e. power of 2)
+        if(n==0 || (n&n-1)==0) return 0;
+        
+        //result
+        int res = 0;
+        //
+        int shift = 1;
+        //temporary count between the 2 set bit
+        int temp =1;
+        
+        //running the bit till shift<=distanceOfMSBfrom0 (i.e distanceOfMSBfrom0 = 0 and shift = 1 at the end)
+        while(shift<=distanceOfMSBfrom0){
+            //checking the next bit of the set bit if it is 0 OR 1
+            //if zero then increasing the increasing the temp value
+            if(((n>>distanceOfMSBfrom0-shift)&1)==0){
+                temp++;
+            }
+            else{
+                //changing the distanceOfMSBfrom0 to distanceOfMSBfrom0-shift 
+                distanceOfMSBfrom0=distanceOfMSBfrom0-shift;
+                //checking if res < temp if it is then assigning the value of temp to res
+                if(res<temp) res=temp;
+                
+                //setting shift to 0 not one because we are increasing it in every iteration
+                //and resetting it to 0 in case we are getting 1
+                shift=0;
+                //reseting temp to 1 
+                temp = 1;
+            }
+            
+            //increasing the shift by 1
+            shift++;
+        }
+        return res;
+    }
+}
