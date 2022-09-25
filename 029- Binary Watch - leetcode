@@ -1,0 +1,31 @@
+class Solution {
+    public List<String> readBinaryWatch(int turnedOn) {
+        List<String> res = new LinkedList<String>();
+        
+        //checking for corner case
+        //when turnOn =0
+        if(turnedOn==0) {
+         res.add("0:00");
+            return res;
+        }
+        
+        //when turnOn =9 BECAUSE it exceeding th elimit of hours and minutes of 12 formats;
+        if(turnedOn==9){
+            return res; 
+        }
+        
+        //for all hours which is between 0 to 11
+        for(int hour=0; hour<12; hour++){
+            //checking for all minutes is in between 0 to 59
+            for(int minutes=0; minutes<60; minutes++){
+            
+                //checking if bit count of both HOUR AND MINUTES IS equal to the turnedOn bit
+                if(Integer.bitCount(hour)+Integer.bitCount(minutes)==turnedOn){
+                    res.add(String.format("%d:%02d",hour,minutes));
+                }
+            }
+        }
+        
+        return res;
+    }
+}
