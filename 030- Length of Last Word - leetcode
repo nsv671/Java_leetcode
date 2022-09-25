@@ -1,0 +1,10 @@
+class Solution {
+    public int lengthOfLastWord(String s) {
+    
+        //split the string in to words by " " as delimeter
+        String[] words = s.split(" ");
+        
+        //calculating and returning the length of the last words
+        return words[words.length-1].length();
+    }
+}
