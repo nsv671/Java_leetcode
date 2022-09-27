@@ -9,3 +9,32 @@ class Solution {
         return res;
     }
 }
+
+
+//RECURSIVE
+class Solution {
+    public int[] runningSum(int[] nums) {
+        int sum =0;
+        int[] res = new int[nums.length];
+        
+        //handing single length array
+        res[0]=nums[0];
+        if(nums.length==1) return res;
+        
+        //recursive call
+        sumOf1Darray(nums, res, 1);
+        
+        return res;
+    }
+    
+    static int[] sumOf1Darray(int[] nums, int[] res, int length){
+        if(length==nums.length-1){
+            res[length] = res[length-1]+nums[length];
+            return res;
+        } 
+        
+        res[length]=nums[length]+res[length-1];
+        
+        return sumOf1Darray(nums, res, length+1);
+    }
+}
