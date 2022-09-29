@@ -1,0 +1,39 @@
+//Recurssion solution
+
+class Solution {
+    public int climbStairs(int n) {
+        int res =0;
+        res = distance(n);
+        return res;
+    }
+    
+    static int distance(int n){
+        if(n==0) return 1;
+        if(n<0) return 0;
+        
+        return distance(n-1)+distance(n-2);
+    }
+}
+
+//iterative solution (we are saving the solution of the previous step)
+
+class Solution {
+    public int climbStairs(int n) {
+        int[] res = new int[n];
+        if(n<=2) return n;
+        
+        //initializing the number of ways possible to reach to step 1 and 2
+        //we can only take 1 step or 2 step at a time
+        res[0] = 1;
+        res[1] = 2;
+        
+        for(int i =2; i<n;i++){
+            //calculating the number of ways to go to ith+1 stare
+            //i.e sum of stare i-2 and i-1 because we can only go to stare i via i-2 and i-1
+            res[i] = res[i-1]+res[i-2];
+        }
+        
+        return res[n-1];
+    }
+    
+}
