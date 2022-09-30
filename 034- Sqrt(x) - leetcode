@@ -1,0 +1,46 @@
+//my solution
+
+class Solution {
+    public int mySqrt(int x) {
+        if(x==0) return 0;
+        if(x<=2) return 1;
+        long num = 1;
+        for(; num*num<=x; num++){
+
+        }
+        return (int)(num-1);
+    }
+}
+
+// discussion solution
+
+class Solution {
+    public int mySqrt(int x) {
+        
+        if( x < 2) return x;        
+        int pivot;
+        int left = 2;
+        int right = x/2;
+        
+        long num;
+        
+        while( left <= right){
+            
+            pivot = left + ( right - left) /2;
+            
+            num = (long)pivot * pivot;
+            
+            if( num > x)
+                right = pivot -1;
+            
+            else if( num < x)
+                left = pivot +1;
+            
+            else
+                return pivot;
+                 
+        }
+        
+        return right;
+    }
+}
