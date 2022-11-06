@@ -1,0 +1,93 @@
+//more efficient then below;
+/*
+class Solution {
+    public int maxProfit(int[] prices) {
+        int left = 0;
+        int right = 1;
+        // choose different day to sale
+        int totalMax = 0;
+        
+        // this would work because if currDiff <= 0 it means left pointer is not the smallest seen so far, thus shifting it to place of the right pointer
+        // hoping this would then give the min  
+        while(right < prices.length) {
+            if(right == left) {
+                right++;
+                continue;
+            }
+            int currDiff =  prices[right] - prices[left];
+            totalMax = Math.max(currDiff, totalMax);
+            if(currDiff <= 0) {
+                // left++;
+                left = right;
+            }
+            right++;
+        }
+        return totalMax;
+    }
+    
+    // the question is equivalent to: find the Min and Max values, but min come before Max
+    // thus the intuitive(?) solution would just to keep take diff between current element and smallest so far
+    /*public int maxProfit(int[] prices) {
+        int left = 0;
+        int right = 1;
+        // choose different day to sale
+        int totalMax = 0;
+        
+        while(right < prices.length) {
+            if(right == left) {
+                right++;
+                continue;
+            }
+            int currDiff =  prices[right] - prices[left];
+            totalMax = Math.max(currDiff, totalMax);
+            if(currDiff <= 0) {
+                left++;
+            } else {
+                right++;
+            }
+        }
+        return totalMax;
+    }*/
+}
+*/
+
+//Little efficient from below solution
+class Solution {
+    public int maxProfit(int[] prices) {
+        int min = prices[0];
+        int profit = 0;
+        for(int i=0; i< prices.length; i++){
+            min = Math.min(min, prices[i]);
+            profit = Math.max(profit, prices[i]-min);
+        }
+        return profit;
+    }
+}
+
+//My first solution but taking much space as compare to other type solution
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        int profit =0;
+        int temp =0;
+
+        int leftMin[] = new int[prices.length];
+        int rightMax[] = new int[prices.length];
+            leftMin[0] = prices[0];
+            rightMax[prices.length-1] = prices[prices.length-1];
+
+        for(int i=1; i<prices.length; i++){
+            leftMin[i] = Math.min(prices[i], leftMin[i-1]);
+        }
+
+        for(int i = prices.length-2; i>=0; i--){
+            rightMax[i] = Math.max(prices[i], rightMax[i+1]);
+        }
+
+        for(int i=0; i<prices.length; i++){
+            temp = rightMax[i]-leftMin[i];
+            profit = Math.max(profit, temp);
+        }
+        return profit;
+    }
+}
