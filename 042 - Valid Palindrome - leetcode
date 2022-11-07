@@ -1,0 +1,54 @@
+//Efficient solution
+class Solution {
+    public boolean isPalindrome(String s) {
+        if(s.isEmpty()) return false;
+
+        int left =0;
+        int right = s.length()-1;
+        char cLeft, cRight;
+        
+        while(left<right){
+            cLeft = s.charAt(left);
+            cRight = s.charAt(right);
+            if(!Character.isLetterOrDigit(cLeft)){
+                left++;
+            } else if(!Character.isLetterOrDigit(cRight))
+                right--;
+            else if(Character.toLowerCase(cLeft)!=Character.toLowerCase(cRight))
+            return false;
+            else{
+                left++;
+                right--;
+            }
+        }
+        return true;
+    }
+}
+
+
+//more space consuming 
+//1st attempt Solution
+class Solution {
+    public boolean isPalindrome(String s) {
+        String temp ="";
+        for(int i=0; i<s.length(); i++){
+            if(s.charAt(i)>='a' && s.charAt(i)<='z' || s.charAt(i)>='0' && s.charAt(i)<='9'){
+                temp+=String.valueOf(s.charAt(i));
+            }
+
+            if( s.charAt(i)>='A' && s.charAt(i)<='Z'){
+                temp+=String.valueOf(Character.toLowerCase(s.charAt(i)));
+            }
+        }
+        int left =0;
+        int right = temp.length()-1;
+        System.out.println(temp);
+        while(left<right){
+            if(temp.charAt(left)!=temp.charAt(right))
+                return false;
+            left++;
+            right--;
+        }
+        return true;
+    }
+}
