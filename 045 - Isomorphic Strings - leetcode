@@ -1,0 +1,28 @@
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        if(s.length() != t.length()) return false;
+
+        //we have created a arrya of size 256, because maximum no of aschi character can be 256
+        //and initiatlizing it with -1
+        int[] s_to_t = new int[256];
+        Arrays.fill(s_to_t, -1);
+
+        int[] t_to_s = new int[256];
+        Arrays.fill(t_to_s, -1);
+
+        for(int i=0; i<s.length(); i++){
+            char s_index = s.charAt(i);
+            char t_index = t.charAt(i);
+
+            //checking if characted is mapped or not. if not maped then we are mapping it 
+            if(s_to_t[s_index]==-1 && t_to_s[t_index]==-1)
+                s_to_t[s_index] = t_index;
+                t_to_s[t_index] = s_index;
+            
+            //if character is mapped differently then we are returning false value
+            if(s_to_t[s_index]!=t_index || t_to_s[t_index]!=s_index)
+                return false;
+        }
+        return true;
+    }
+}
