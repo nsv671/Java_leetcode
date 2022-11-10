@@ -1,0 +1,25 @@
+//My solution
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        HashSet<Integer> res = new HashSet<Integer>();
+
+        for(int i=0; i<nums.length; i++){
+            res.add(nums[i]);
+        }
+
+        return res.size() == nums.length? false:true;
+    }
+}
+
+//Using Arrays.sort()
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+       Arrays.sort(nums);
+
+       for(int i=1; i<nums.length; i++){
+           if(nums[i]==nums[i-1])
+                return true;
+       }
+       return false;
+    }
+}
