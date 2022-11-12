@@ -1,0 +1,29 @@
+//-----> IDEA
+//Include all even counts and for odds, decrement 1 and add them. Why? We want to maximize the length of palindrome, 
+//so we can only include one odd freq in the final palindrome (that we will decide at the end).
+//So at the end, if we have more characters than the count, then we can include 1 more character to get the maximum possible length of palindrome.
+
+//If there are no odd freq chars, then count == s.len
+
+class Solution {
+    public int longestPalindrome(String s) {
+        if(s.length()==1) return 1;
+        int frequency[] = new int['z'+1];
+        for(int i=0; i<s.length(); i++){
+            frequency[s.charAt(i)]++;
+        }
+
+        int total =0;
+        int len =0;
+        for(int i=0; i<frequency.length; i++){
+            total+=frequency[i];
+            if(total%2!=0){
+                total--;
+            }
+            if(frequency[i]%2==0){
+                len+=frequency[i];
+            }
+        }
+        return total<s.length()? total+1:total;
+    }
+}
