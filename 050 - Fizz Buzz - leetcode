@@ -1,0 +1,79 @@
+class Solution {
+    public List<String> fizzBuzz(int n) {
+        List<String> res = new ArrayList<String>();
+        for(int i=1; i<=n; i++){
+            if(i%3==0 && i%5==0){
+                res.add("FizzBuzz");
+                continue;
+            }
+            if(i%5==0){
+                res.add("Buzz");
+                continue;
+            }
+            if(i%3==0){
+                res.add("Fizz");
+                continue;
+            }
+
+            res.add(i+"");
+        }
+        return res;
+    }
+}
+
+//from solution
+class Solution {
+    public List<String> fizzBuzz(int n) {
+        List<String> fb = new ArrayList<>();
+
+        for (int i = 1; i <= n; i++) {
+            if (i%3 == 0 && i%5 == 0) {
+                fb.add("FizzBuzz");
+            } else if (i%3 == 0) {
+                fb.add("Fizz");
+            } else if (i%5 == 0) {
+                fb.add("Buzz");
+            } else {
+                fb.add(String.valueOf(i));
+            }
+        }
+
+        return fb;
+    }
+
+    // public List<String> fizzBuzz(int n) {
+    //     List<String> fb = new ArrayList<>();
+    //     int fizz = 0;
+    //     int buzz = 0;
+    //     for (int i = 1; i <= n; i++) {
+    //         fizz++;
+    //         buzz++;
+    //         if (fizz == 3) {
+    //             fizz = 0;
+    //             if (buzz == 5) {
+    //                 buzz = 0;
+    //                 fb.add("FizzBuzz");
+    //             } else {
+    //                 fb.add("Fizz");
+    //             }
+    //         }else if (buzz == 5) {
+    //             buzz = 0;
+    //             fb.add("Buzz");
+    //         } else {
+    //             fb.add(i+"");
+    //         }
+    //     }
+    //     return fb;
+    // }
+
+    // public List<String> fizzBuzz(int n) {
+    //     List<String> fb = new ArrayList<>();
+    //     for (int i = 1; i <= n; i++) {
+    //         fb.add("");
+    //         if (i%3 == 0) fb.set(i-1, "Fizz");
+    //         if (i%5 == 0) fb.set(i-1, fb.get(i-1)+"Buzz");
+    //         if (fb.get(i-1).equals("")) fb.set(i-1, String.valueOf(i));
+    //     }
+    //     return fb;
+    // }
+}
