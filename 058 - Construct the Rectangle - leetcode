@@ -1,0 +1,39 @@
+//My so;ution
+class Solution {
+    public int[] constructRectangle(int area) {
+        int temp = (int) Math.sqrt(area);
+        if(area%temp==0)
+            return new int[] {area/temp, temp};
+
+        while(area%temp!=0){
+            temp--;
+        }
+        int[] res = {area/temp, temp};
+        return res;
+    }
+    
+}
+
+
+//from explanation
+class Solution {
+public int[] constructRectangle(int area) {
+        int[] arr = new int[2];
+        if(area==0)
+            return new int[]{};
+        int sq_root = (int)Math.sqrt(area);
+        int quotient=area/sq_root;
+        if(area%sq_root==0) {
+            arr[0]=quotient;
+            arr[1]=sq_root;
+        }
+        else {
+            while((area%sq_root)!=0)
+                sq_root--;
+            arr[0]=area/sq_root;
+            arr[1]=sq_root;
+        }
+        return arr;
+        
+    }
+}
