@@ -1,0 +1,32 @@
+//my solution
+class Solution {
+    public int singleNumber(int[] nums) {
+        if(nums.length==1) return nums[0];
+        HashMap<Integer, Integer> frequency = new HashMap<Integer, Integer>();
+        for(int i=0; i<nums.length; i++){
+            if(frequency.get(nums[i])==null) //containsKey
+                frequency.put(nums[i],1);
+            else
+                frequency.put(nums[i], frequency.get(nums[i])+1);
+        }
+
+        for(int i=0; i<nums.length; i++)
+            if(frequency.get(nums[i])==1)
+                return nums[i];
+        return 0;
+    }
+}
+
+//after going through explanation
+class Solution {
+    public int singleNumber(int[] nums) {
+        if(nums.length==1) return nums[0];
+        Arrays.sort(nums);
+        if(nums[0]!=nums[1]) return nums[0];
+        for(int i=1; i<nums.length-1; i++){
+            if(nums[i]!= nums[i-1] && nums[i]!=nums[i+1])
+                return nums[i];
+        }
+        return nums[nums.length-1];
+    }
+}
