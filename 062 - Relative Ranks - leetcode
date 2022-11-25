@@ -1,0 +1,30 @@
+//my solution
+class Solution {
+    public String[] findRelativeRanks(int[] score) {
+        int[] tempArray = new int[score.length];
+        String[] res = new String[score.length];
+        for(int i=0; i<score.length; i++){
+            tempArray[i] = score[i];
+        }
+
+        Arrays.sort(tempArray);
+
+        for(int i=score.length-1; i>=0; i--){
+            for(int j=0; j<score.length; j++){
+                if(i==score.length-1 && tempArray[score.length-1]==score[j])
+                    res[j] = "Gold Medal";
+                
+                else if(i==score.length-2 && tempArray[score.length-2]==score[j])
+                    res[j] = "Silver Medal";
+                
+                else if(i==score.length-3 && tempArray[score.length-3]==score[j])
+                    res[j] = "Bronze Medal";  
+                
+                else if(tempArray[i]==score[j])
+                    res[j] = ""+(score.length-i);
+                
+            }
+        }
+            return res;
+    }
+}
