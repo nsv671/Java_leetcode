@@ -1,0 +1,22 @@
+//my solution (Binary search)
+class Solution {
+    public boolean isPerfectSquare(int num) {
+        int low =0, high=num;
+        while(low<=high){
+        
+            //we are taking long because for INT max (i.e 2147483647) when mid*mid > 2147483647, it will show time exceeding
+            long mid = low +(high-low)/2;
+            
+            if(mid*mid==num)
+                return true;
+                
+            if(mid*mid>num)
+                high=(int)mid-1;
+            else
+                low = (int)mid+1;
+                
+        }
+        
+        return false;
+    }
+}
