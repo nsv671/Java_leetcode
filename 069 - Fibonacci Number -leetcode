@@ -1,0 +1,28 @@
+//my solution
+
+//recusive solution
+class Solution {
+    public int fib(int n) {
+        if(n==0 || n==1)
+            return n;
+        return fib(n-1)+fib(n-2);
+    }
+}
+
+//loop solution
+class Solution {
+    public int fib(int n) {
+        if(n==0 || n==1)
+            return n;
+        int temp=0, f1=0, f2=1;
+        int counter =2;
+
+        while(counter<=n){
+            temp =f1+f2;
+            f1 = f2;
+            f2=temp;
+            counter++;
+        }
+        return temp;
+    }
+}
