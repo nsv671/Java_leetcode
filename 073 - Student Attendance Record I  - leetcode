@@ -1,0 +1,57 @@
+//my solution
+
+class Solution {
+    public boolean checkRecord(String s) {
+        int aCount =0, lConsicutiveCount=0;
+        if(s.charAt(0)=='A')
+            aCount=1;
+        if(s.charAt(0)=='L')
+            lConsicutiveCount=1;
+
+        for(int i=1; i<s.length(); i++){
+            if(aCount>1 || lConsicutiveCount==3)
+                return false;
+
+            if(s.charAt(i)=='A')
+                aCount++;
+            if(s.charAt(i-1)=='L' && s.charAt(i)=='L'){
+                lConsicutiveCount++;
+            }
+            else
+                lConsicutiveCount=1;
+        }
+        //because we need to handle the case like ...LLL and ....AA
+        //in side the loop we are not checking the last number
+        if(lConsicutiveCount==3 || aCount==2)
+            return false;
+        return true;
+    }
+}
+
+//2nd case we will check the condition after we do the operation operation 
+
+class Solution {
+    public boolean checkRecord(String s) {
+        int aCount =0, lConsicutiveCount=0;
+        if(s.charAt(0)=='A')
+            aCount=1;
+        if(s.charAt(0)=='L')
+            lConsicutiveCount=1;
+
+        for(int i=1; i<s.length(); i++){
+
+            if(s.charAt(i)=='A')
+                aCount++;
+            if(s.charAt(i-1)=='L' && s.charAt(i)=='L'){
+                lConsicutiveCount++;
+            }
+            else
+                lConsicutiveCount=1;
+
+            if(aCount>1 || lConsicutiveCount==3)
+            return false;
+        }
+
+        return true;
+    }
+}
