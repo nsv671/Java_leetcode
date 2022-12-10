@@ -1,0 +1,27 @@
+//my solution
+class Solution {
+    public boolean wordPattern(String pattern, String s) {
+        String[] wordArray = s.split(" ");
+        
+        if(wordArray.length != pattern.length())
+            return false;
+
+        HashMap<Character, String> map = new HashMap<Character, String>();
+
+        for(int i=0; i<pattern.length(); i++){
+
+            //checking if for the particular key which is not present and its value is present in the map, IF THIS CONDITION IS TRUE THEN WE ARE RETURNING FALSE
+            //since in question it is mention bijection
+            if(map.get(pattern.charAt(i)) == null && map.containsValue(wordArray[i]))
+                return false;
+
+            if(map.get(pattern.charAt(i)) == null ){
+                map.put(pattern.charAt(i), wordArray[i]);
+            }
+            else if(!map.get(pattern.charAt(i)).equals(wordArray[i])){
+                return false;
+            }
+        }
+        return true;
+    }
+}
