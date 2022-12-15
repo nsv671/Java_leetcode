@@ -1,0 +1,27 @@
+//my solution after seeing explanation
+
+class Solution {
+    public String reverseStr(String s, int k) {
+        if(s==null || s.length()==0)
+            return s;
+        int length =0;
+        char[] charArrayS = s.toCharArray();
+        while(length<s.length()){
+            reverse(charArrayS, length, k);
+            length+=2*k;
+        }
+        return String.valueOf(charArrayS);
+        
+    }
+
+    public void reverse(char[] s, int start, int length){
+        int end = Math.min(s.length-1, start+length-1);
+        while(start<end){
+            char temp = s[start];
+            s[start] = s[end];
+            s[end] = temp;
+            start++;
+            end--;
+        }
+    }
+}
