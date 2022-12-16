@@ -1,0 +1,28 @@
+class Solution {
+    public int[][] matrixReshape(int[][] mat, int r, int c) {
+        
+        if( (mat.length == r && mat[0].length == c) || mat.length*mat[0].length != r*c)
+            return mat;
+
+        int[][] res = new int[r][c];
+        int m = mat[0].length;
+        for(int i=0; i<r*c; i++){
+            res[i/c][i%c] = mat[i/m][i % m];
+        }
+
+        return res;        
+    }
+}
+
+
+//from explanation
+// class Solution {
+//     public int[][] matrixReshape(int[][] nums, int r, int c) {
+//         int n = nums.length, m = nums[0].length;
+//         if (r*c != n*m) return nums;
+//         int[][] res = new int[r][c];
+//         for (int i=0;i<r*c;i++) 
+//             res[i/c][i%c] = nums[i/m][i%m];
+//         return res;
+//     }
+// }
