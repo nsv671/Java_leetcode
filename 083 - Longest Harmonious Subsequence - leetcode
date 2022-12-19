@@ -1,0 +1,14 @@
+//after seeing the discussion but the optimall solution
+class Solution {
+    public int findLHS(int[] nums) {
+        HashMap<Integer, Integer> frequency = new HashMap<Integer,Integer>();
+        Arrays.sort(nums);
+        int max=0;
+        for(int i :nums){
+            frequency.put(i, frequency.getOrDefault(i,0)+1);
+            if(frequency.containsKey(i-1))
+                max = Math.max(max, frequency.get(i-1)+frequency.get(i));
+        }
+        return max;
+    }
+}
