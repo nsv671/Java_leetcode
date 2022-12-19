@@ -1,0 +1,46 @@
+//my efficient solution
+class Solution {
+    public int maxCount(int m, int n, int[][] ops) {
+        if(ops.length==0 || ops==null)
+                return m*n;
+        
+        int rowMin = Integer.MAX_VALUE;
+        int columnMin = Integer.MAX_VALUE;
+
+        for(int i=0; i<ops.length; i++){
+            rowMin = Math.min(rowMin, ops[i][0]);
+            columnMin = Math.min(columnMin, ops[i][1]);
+        }
+
+        return rowMin*columnMin;
+    }
+}
+
+//My Naive solution
+class Solution {
+    public int maxCount(int m, int n, int[][] ops) {
+        if(ops.length==0)
+                return m*n;
+        
+        int[][] maxInteger = new int[m][n];
+        int res =0;
+        
+        for(int i=0; i<ops.length; i++){
+            int rowEnd = ops[i][0];
+            int columnEnd = ops[i][1];
+            
+            for(int j=0; j<rowEnd; j++){
+                for(int k=0; k<columnEnd; k++){
+                    maxInteger[j][k]++;
+                }
+            }
+        }
+        
+        for(int i=0; i<m; i++)
+            for(int j=0; j<n; j++)
+                if(maxInteger[i][j]==ops.length)
+                    res++;
+        
+        return res;
+    }
+}
