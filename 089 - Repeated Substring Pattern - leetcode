@@ -1,0 +1,30 @@
+class Solution {
+
+    public boolean repeatedSubstringPattern(String s) {
+
+        if(s.length()==1)
+
+            return false;
+
+        if(s.length()==2)
+
+            return s.charAt(0)==s.charAt(1)?true:false;
+
+        
+
+        String compare = s+s;
+
+        compare = compare.substring(1,compare.length()-2);
+
+        
+
+        if(compare.contains(s))
+
+            return true;
+
+        return false;
+
+    }
+
+}
+
