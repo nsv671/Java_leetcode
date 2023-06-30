@@ -1,0 +1,39 @@
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+
+        Arrays.sort(nums);
+
+        int length = nums.length;
+        for(int i=0; i<length-2; i++){
+            int low = i+1, high = length-1;
+
+            //to avoid the case where 2 consicutive index value is same
+            if(i == 0 || (i > 0 && nums[i] != nums[i - 1])){
+                while(low<high){
+                    if(nums[i]+nums[low]+nums[high] == 0){
+                        List<Integer> resEachElement = new ArrayList<Integer>();
+                        resEachElement.add(nums[i]);
+                        resEachElement.add(nums[low]);
+                        resEachElement.add(nums[high]);
+
+                        res.add(resEachElement);
+                        // res.add(Arrays.asList(nums[i], nums[low], nums[high]));
+
+                        //to avoid dublicate value inserssion
+                        while(low < high && nums[low] == nums[low + 1]) low ++;
+                        while(low < high && nums[high] == nums[high - 1]) high --;
+
+                        low++;
+                        high--;
+                    }else if(nums[i]+nums[low]+nums[high] > 0)
+                        high--;
+                    else
+                        low++;
+                }
+            }
+        }
+
+        return res;
+    }
+}
