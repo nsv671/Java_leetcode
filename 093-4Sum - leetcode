@@ -18,8 +18,6 @@ class Solution {
 
                 int low = j+1, high = length-1;
 
-                // int difference =target - nums[i] - nums[j];
-
                 while(low<high){
                     //to handlecornercase like INT limit exceeding    
                     long sum = (long) nums[i]+nums[j]+nums[low]+nums[high];
