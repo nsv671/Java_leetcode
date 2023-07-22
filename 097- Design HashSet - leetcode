@@ -1,0 +1,51 @@
+//my 1st thought
+class MyHashSet {
+
+    ArrayList<Integer> arrayList = new ArrayList<Integer>();
+    public MyHashSet() {
+
+    }
+    
+    public void add(int key) {
+        if(arrayList.contains(key))
+            return;
+        
+        arrayList.add(key);
+        return;
+    }
+    
+    public void remove(int key) {
+        if(arrayList.contains(key)){
+            int index = arrayList.indexOf(key);
+            arrayList.remove(index);
+            return;
+        }
+        
+        return;
+    }
+    
+    public boolean contains(int key) {
+        return arrayList.contains(key);
+    }
+}
+
+
+//after seeing editorial
+class MyHashSet {
+    boolean set[];
+    public MyHashSet() {
+        set = new boolean[1000001];
+    }
+    
+    public void add(int key) {
+        set[key] = true;
+    }
+    
+    public void remove(int key) {
+        set[key] = false;
+    }
+    
+    public boolean contains(int key) {
+        return set[key];
+    }
+}
