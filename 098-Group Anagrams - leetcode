@@ -1,0 +1,21 @@
+//Time complexity O(n)
+//space complexity O(N);
+
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        HashMap<String, List<String>> hm = new HashMap<>();
+
+        for(String str : strs){
+            char[] chars = str.toCharArray();
+            Arrays.sort(chars);
+            String sortedWord = new String(chars);
+
+            if(!hm.containsKey(sortedWord))
+                hm.put(sortedWord, new ArrayList<>());
+
+            hm.get(sortedWord).add(str);
+        }
+
+        return new ArrayList<>(hm.values());
+    }
+}
